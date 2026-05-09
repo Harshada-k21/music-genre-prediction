@@ -1,0 +1,298 @@
+/* Reset and Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Target both body AND Vite's root container */
+body, html {
+  background-color: #0f172a;
+  color: #f8fafc;
+  font-family: 'Inter', system-ui, sans-serif;
+  min-height: 100vh;
+  width: 100%;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Allows scrolling if the content gets too tall */
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem 1rem; /* 1rem side padding prevents it from touching screen edges on mobile */
+}
+
+.app-container {
+  width: 100%;
+  max-width: 650px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 0 auto; /* Absolute guarantee it centers horizontally */
+}
+
+/* Header */
+.header {
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  line-height: 1.2;
+}
+
+.header p {
+  color: #94a3b8;
+}
+
+/* Upload Section */
+.upload-section {
+  border: 2px dashed #475569;
+  border-radius: 16px;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  background-color: #1e293b;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.upload-section:hover {
+  border-color: #6366f1;
+  background-color: #243147;
+}
+
+/* Buttons and Inputs */
+button {
+  background-color: #6366f1;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button:hover:not(:disabled) {
+  background-color: #4f46e5;
+}
+
+button:disabled {
+  background-color: #334155;
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+input[type="file"] {
+  max-width: 100%;
+}
+
+input[type="file"]::file-selector-button {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-right: 1rem;
+  transition: background-color 0.2s;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background-color: #2563eb;
+}
+
+/* Results Card */
+.results-card {
+  background-color: #1e293b;
+  border-radius: 16px;
+  padding: 2.5rem;
+  text-align: center;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  width: 100%;
+}
+
+.results-card h2 {
+  margin-bottom: 1.5rem;
+  color: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.predictions-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.prediction-item.winner {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #10b981;
+  text-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
+}
+
+.prediction-item.runner-up {
+  font-size: 1.1rem;
+  color: #cbd5e1;
+}
+
+/* Feedback Section */
+.feedback-section {
+  border-top: 1px solid #334155;
+  padding-top: 2rem;
+}
+
+.feedback-section h3 {
+  margin-bottom: 0.5rem;
+  color: #f8fafc;
+}
+
+.feedback-section p {
+  color: #94a3b8;
+  margin-bottom: 1.5rem;
+}
+
+.feedback-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.feedback-buttons button {
+  background-color: #334155;
+}
+
+.feedback-buttons button:hover {
+  background-color: #475569;
+}
+
+.custom-genre-form {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.custom-genre-form input {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #475569;
+  background-color: #0f172a;
+  color: white;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+  flex: 1; /* Allows input to stretch */
+}
+
+.custom-genre-form input:focus {
+  border-color: #6366f1;
+}
+
+.success-message {
+  background-color: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  padding: 1.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+/* =========================================
+   MOBILE RESPONSIVENESS (Media Queries)
+   ========================================= */
+@media (max-width: 600px) {
+  #root {
+    padding: 1rem; /* Less padding on small screens */
+  }
+
+  .header h1 {
+    font-size: 1.8rem;
+  }
+
+  .upload-section, .results-card {
+    padding: 1.5rem; /* Shrink the massive internal padding */
+  }
+
+  .prediction-item.winner {
+    font-size: 1.5rem;
+  }
+
+  /* Make file upload button block-level so it stacks nicely on phones */
+  input[type="file"]::file-selector-button {
+    display: block;
+    width: 100%;
+    margin: 0 0 1rem 0;
+  }
+
+  /* Stack the custom genre input and button vertically */
+  .custom-genre-form {
+    flex-direction: column;
+  }
+
+  .custom-genre-form button {
+    width: 100%;
+  }
+
+  .feedback-buttons {
+    flex-direction: column;
+  }
+  
+  .feedback-buttons button {
+    width: 100%;
+  }
+}
+.footer-signature {
+  margin-top: 3rem;
+  padding-bottom: 2rem;
+  text-align: center;
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+.footer-signature a {
+  color: #6366f1; /* Matches your theme's Indigo */
+  text-decoration: none;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.footer-signature a:hover {
+  color: #818cf8;
+  text-shadow: 0 0 10px rgba(99, 102, 241, 0.4);
+}
+
+/* Optional: A subtle underline that appears on hover */
+.footer-signature a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: #6366f1;
+  transition: width 0.3s ease;
+}
+
+.footer-signature a:hover::after {
+  width: 100%;
+}

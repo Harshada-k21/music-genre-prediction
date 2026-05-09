@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ai-audio-analyzer-dusky.vercel.app/sitemap.xml

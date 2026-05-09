@@ -1,0 +1,15 @@
+# Passwords
+.env
+
+# Virtual Environments
+venv/
+__pycache__/
+
+# Massive Data Folders (Keep these local only!)
+backend/genres_original/
+backend/temp_uploads/
+
+# Node modules
+frontend/node_modules/
+
+backend/data.json
